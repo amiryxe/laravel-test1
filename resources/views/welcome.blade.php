@@ -17,6 +17,10 @@
 
 </head>
 <body>
+<p>
+    Tehran Time: {{date('Y-m-d H:i:s')}}
+</p>
+
 <ul>
     @foreach($names as $name)
         <li>
