@@ -19,11 +19,13 @@ Route::get('/about', 'PagesController@about');
 Route::get('/contact', 'PagesController@contact');
 
 Route::get('/products', function (){
-//   $products = DB::table('products')
-//       ->where('name', 'like', '%Pi%')
-//       ->get();
+    $products = DB::table('products')->get();
 
-    $products = DB::table('products')->first();
+    return view('products.all', compact('products'));
+});
 
-   dd($products);
+Route::get('/product/{id}', function ($id) {
+    $singleProduct = DB::table('products')->find($id);
+
+    return view('products.singleProduct', compact('singleProduct'));
 });
