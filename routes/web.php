@@ -24,7 +24,7 @@ Route::get('/products', function (){
     return view('products.all', compact('products'));
 });
 
-Route::get('/product/{id}', function ($id) {
+Route::get('/products/{id}', function ($id) {
     $singleProduct = DB::table('products')->find($id);
 
     return view('products.singleProduct', compact('singleProduct'));

@@ -10,7 +10,7 @@
 <body>
 @foreach($products as $product)
     <div>
-        <a href="product/{{$product->id}}">
+        <a href={{ "/products/" . $product->id }}>
             {{$product->name}}
         </a>
     </div>
