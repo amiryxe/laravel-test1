@@ -19,7 +19,7 @@ Route::get('/about', 'PagesController@about');
 Route::get('/contact', 'PagesController@contact');
 
 Route::get('/products', function (){
-    $products = DB::table('products')->get();
+    $products = DB::table('products')->orderBy('name')->get();
 
     return view('products.all', compact('products'));
 });
