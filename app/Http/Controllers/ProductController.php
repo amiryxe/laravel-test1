@@ -21,7 +21,7 @@ class ProductController extends Controller
     }
 
     public function show($id) {
-        $singleProduct = Product::where('id', '=', $id)->first();
+        $singleProduct = Product::findOrFail($id);
 
         return view('products.singleProduct', compact('singleProduct'));
     }
