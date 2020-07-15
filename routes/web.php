@@ -1,7 +1,7 @@
 <?php
 
+use App\Product;
 use Illuminate\Support\Facades\Route;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -19,13 +19,22 @@ Route::get('/about', 'PagesController@about');
 Route::get('/contact', 'PagesController@contact');
 
 Route::get('/products', function (){
-    $products = DB::table('products')->orderBy('name')->get();
+//    $products = App\Product::orderBy('name')->get();
+    $products = Product::all();
 
     return view('products.all', compact('products'));
 });
 
+Route::get('/products/filtered/', function (){
+    $productFiltered = Product::searchText();
+
+    return view('products.filtered', compact('productFiltered'));
+});
+
 Route::get('/products/{id}', function ($id) {
-    $singleProduct = DB::table('products')->find($id);
+    $singleProduct = Product::where('id', '=', $id)->first();
 
     return view('products.singleProduct', compact('singleProduct'));
 });
+
+
