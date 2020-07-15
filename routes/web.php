@@ -26,7 +26,7 @@ Route::get('/products', function (){
 });
 
 Route::get('/products/filtered/', function (){
-    $productFiltered = Product::searchText();
+    $productFiltered = Product::filteredProducts();
 
     return view('products.filtered', compact('productFiltered'));
 });
